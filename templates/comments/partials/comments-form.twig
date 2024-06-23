@@ -1,0 +1,16 @@
+<form id="comment-form" class="comment-form" style="display: none;">
+
+    <label for="comment-author">Name</label>
+    <input type="text" id="comment-author" name="author" required>
+    <input type="hidden" name="entry_uri" value="{{ entry.uri }}">
+
+    <label for="comment-content">Comment</label>
+    <textarea id="comment-content" name="content" rows="4" required></textarea>
+
+    <div class="char-count">
+        <span>2400</span> characters remaining
+    </div>
+
+    <input type="hidden" name="replies_to_id" value="">
+    <button type="submit">Submit Comment</button>
+</form>

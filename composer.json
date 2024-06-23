@@ -1,0 +1,62 @@
+{
+    "name": "skimpy/ai-comments",
+    "description": "AI and user comments for Skimpy",
+    "homepage": "https://github.com/skimpy/ai-comments",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Justin Tallant",
+            "email": "jtallant07@gmail.com",
+            "homepage": "http://justintallant.com"
+        }
+    ],
+    "scripts": {
+        "test": "./vendor/bin/phpunit",
+        "stan": "./vendor/bin/phpstan analyse src --level=6"
+    },
+    "keywords": [
+        "cms",
+        "blog",
+        "comments",
+        "AI comments",
+        "flat file cms",
+        "flat file blog",
+        "skimpy",
+        "skimpy cms"
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "skimpy/engine": "*",
+        "mailgun/mailgun-php": "^4.2",
+        "nyholm/psr7": "^1.8@dev",
+        "symfony/http-client": "7.2.x-dev",
+        "openai-php/client": "dev-main"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "phpstan/phpstan": "2.0.x-dev",
+        "mockery/mockery": "2.0.x-dev"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../engine"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Skimpy\\Comments\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Skimpy\\Comments\\": "tests/php"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
