@@ -1,5 +1,7 @@
 # AI Comments
 
+Work in progress. Do not install yet.
+
 ## Installation
 * Automatic
     - `database/comments.sqlite` is created if it does not exist
