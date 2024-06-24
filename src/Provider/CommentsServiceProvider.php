@@ -14,12 +14,12 @@ class CommentsServiceProvider extends ServiceProvider
     {
         $this->mergeConfigs();
         $this->setupCommentsDatabase();
+        $this->copyTemplates();
     }
 
     public function boot(): void
     {
         $this->defineRoutes();
-        $this->copyTemplates();
     }
 
     private function mergeConfigs(): void
@@ -50,9 +50,9 @@ class CommentsServiceProvider extends ServiceProvider
         (new SchemaTool($entityManager))->updateSchema($classes, $createIfNotExists);
     }
 
-    private function defineRoutes()
+    private function defineRoutes(): void
     {
-        $router = $this->app->router;
+        $router = $this->app->make('router');
 
         $router->group(['prefix' => 'api/comments'], function () use ($router) {
             $router->get('/', 'Skimpy\Comments\Http\CommentsController@index');

@@ -63,6 +63,9 @@ class SendEmailVerificationController extends BaseController
         return null;
     }
 
+    /**
+     * @return array{name: string, email: string, entry_uri: string}
+     */
     private function sanitizeData(Request $request): array
     {
         return [

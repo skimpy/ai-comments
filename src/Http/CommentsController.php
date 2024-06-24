@@ -7,6 +7,7 @@ namespace Skimpy\Comments\Http;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\Factory;
+use Illuminate\Validation\Validator;
 use Skimpy\Comments\Entities\Comment;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
@@ -71,7 +72,7 @@ class CommentsController extends BaseController
         return $this->commentAddedResponse($comment);
     }
 
-    private function validationFailedResponse($validator): JsonResponse
+    private function validationFailedResponse(Validator $validator): JsonResponse
     {
         return new JsonResponse([
             'message' => 'Validation failed',
@@ -79,6 +80,10 @@ class CommentsController extends BaseController
         ], 422);
     }
 
+    /**
+     * @param array<string, string> $data
+     * @return array<string, string>
+     */
     private function sanitizeData(array $data): array
     {
         $data['entry_uri'] = strip_tags($data['entry_uri']);
@@ -89,6 +94,9 @@ class CommentsController extends BaseController
         return $data;
     }
 
+    /**
+     * @param array<string, string> $data
+     */
     private function createComment(array $data): Comment
     {
         return new Comment(
@@ -98,6 +106,9 @@ class CommentsController extends BaseController
         );
     }
 
+    /**
+     * @param array<string, string> $data
+     */
     private function associateReplyToComment(array $data, Comment $comment): void
     {
         if (!empty($data['replies_to_id'])) {

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Skimpy\Comments\Provider;
 
-use Illuminate\Support\ServiceProvider;
 use Skimpy\Comments\Entities\Comment;
-use Skimpy\Comments\CommentViewDecorator;
+use Illuminate\Support\ServiceProvider;
+use Skimpy\Comments\View\CommentViewDecorator;
 
 class TwigFunctionsProvider extends ServiceProvider
 {
