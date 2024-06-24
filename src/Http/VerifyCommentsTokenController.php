@@ -27,7 +27,7 @@ class VerifyCommentsTokenController extends BaseController
 
         $email = $this->emails->findOneBy([
             'token' => $token,
-            'expiresAt' => ['>' => new \DateTime()],
+            'expiresAt' => ['>' => (new \DateTime())->format('Y-m-d H:i:s')],
             'verifiedAt' => null,
         ]);
 
